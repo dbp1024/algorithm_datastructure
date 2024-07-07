@@ -26,8 +26,8 @@ public class LinearSearch {
         // System.out.println(res3);
 
         // 数据规模
-        int[] datasize = { 1000000, 10000000 };
-        for (int n : datasize) {
+        int[] dataSize = { 1000000, 10000000 };
+        for (int n : dataSize) {
             Integer[] data = ArrayGenerator.generateOrderedArray(n);
 
             long startTime = System.nanoTime();
