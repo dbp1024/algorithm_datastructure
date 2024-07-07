@@ -25,6 +25,7 @@ public class LinearSearch {
         // int res3 = LinearSearch.search(students, new Student("Bobo"));
         // System.out.println(res3);
 
+        // 数据规模
         int[] datasize = { 1000000, 10000000 };
         for (int n : datasize) {
             Integer[] data = ArrayGenerator.generateOrderedArray(n);
