@@ -24,12 +24,10 @@ public class SelectSort {
     }
 
     public static void main(String[] args) {
-        Integer[] arr = {1,4,2,3,6,5};
-        SelectSort.sort(arr);
-
-        for (int e:arr){
-            System.out.print(e+" ");
+        int[] dataSize ={10000,100000};
+        for (int n:dataSize){
+            Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
+            SortHelper.testSort("SelectSort", arr);
         }
-        System.out.println();
     }
 }

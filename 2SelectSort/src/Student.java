@@ -1,0 +1,34 @@
+import com.sun.javafx.binding.StringFormatter;
+import com.sun.xml.internal.ws.api.ha.StickyFeature;
+
+public class Student implements Comparable<Student>{
+    private String name;
+    private int score;
+
+    public Student(String name, int score){
+        this.name = name;
+        this.score = score;
+    }
+
+    @Override
+    public boolean equals(Object another){
+        if (this==another)
+            return true;
+        if (another == null)
+            return false;
+        if (this.getClass()!=another.getClass())
+            return false;
+
+       return this.name.equals(((Student)another).name);
+    }
+
+    @Override
+    public int compareTo(Student another){
+        return this.score - another.score;
+    }
+
+    @Override
+    public String toString(){
+        return String.format("Student(name: %s, score:%d)", name, score);
+    }
+}
