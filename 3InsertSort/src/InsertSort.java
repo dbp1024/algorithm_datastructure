@@ -1,7 +1,9 @@
+import java.util.Arrays;
+
 public class InsertSort {
     private InsertSort(){}
 
-    public static <E extends Comparable<E>> void sort(E[] arr){
+    public static <E extends Comparable<E>> void sort1(E[] arr){
         for(int i=0; i<arr.length; i++){
             // arr[0,i)已排序，arr[i,length)未排序
             // 将arr[i]插入到前面的合适位置
@@ -10,6 +12,22 @@ public class InsertSort {
                     swap(arr, j, j-1);
                 }else break;
             }
+        }
+    }
+
+    // 平移代替交换
+    public static <E extends Comparable<E>> void sort(E[] arr){
+        for (int i=0; i<arr.length; i++){
+            // arr[0,i)已排序，arr[i,length)未排序
+            // 把arr[i]放到合适的位置
+            E t = arr[i];
+            int j;
+            for (j=i;j-1>=0;j--){
+                if (arr[j-1].compareTo(t)>0)
+                    arr[j] = arr[j-1];
+                else break;;
+            }
+            arr[j] = t;
         }
     }
 
@@ -22,8 +40,17 @@ public class InsertSort {
     public static void main(String[] args) {
         int[] dataSize = {10000, 100000};
         for (int n:dataSize){
+            System.out.println("Random array:");
             Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
+            Integer[] arr2 = Arrays.copyOf(arr, arr.length);
             SortHelper.testSort("InsertSort", arr);
+            SortHelper.testSort("SelectSort", arr2);
+
+            System.out.println("Ordered array:");
+            arr = ArrayGenerator.generateOrderedArray(n);
+            arr2 = Arrays.copyOf(arr, arr.length);
+            SortHelper.testSort("InsertSort", arr);
+            SortHelper.testSort("SelectSort", arr2);
         }
     }
 }
